@@ -82,7 +82,9 @@ private:
 
 	DataAnalyzer* get_dataAnalyzer() {
 		DataAnalyzerNavigator* data_navi;
-		if (Get_AgentType() == 2131) {
+		//2026/10/1 ogibayashi: item_type_idkはretailer+soleproprietorの製品群(retailMarket)。
+		//soleproprietor(2130)もretailer(2131)と同じくretailMarket側のDataAnalyzerを見るべき(2132=wholesalerのみmaterialMarket)。
+		if (Get_AgentType() == 2131 || Get_AgentType() == 2130) {
 			data_navi = app_context.dataAnalyzer_navi_for_retailMarket;
 			//fprintf(app_context.config->out_temporary, "inside producer get_dataAnalyzer retailMarketが選択されました\n");
 		}
@@ -106,6 +108,7 @@ protected:
 	long long ave_price_in_market;//period=1以降の各期首に自分が製造するitem_type_idについてデータを格納しておく。
 	int size_of_stock_in_market = 0;
 	int q_count = 0;
+	double qcount_round_carry = 0.0;//丸め誤差を次期に持ち越すための状態変数(2026/10/1 ogibayashi)
 	void set_q_count(int q_count) { this->q_count = q_count; }
 	int get_q_count() { return q_count; }
 	int new_qcount = 0;
@@ -687,20 +690,28 @@ protected:
 	*/	
 	
 //Ogibayahi original logic for quantity	
+		//2026/10/1 ogibayashi: beta(5%程度)による調整量が生産量の絶対水準が小さい(10個未満等)ときに
+		//四捨五入で消えてq_countが不動点に固定される問題への対処。切り捨てた(あるいは切り上げた)小数分を
+		//qcount_round_carryに保存し次期の計算に加算することで、複数期にわたって蓄積させ丸めの情報を失わないようにする。
+		bool carry_reset = false;
+		double raw_qcount = 0.0;
 		if (critical_stock == 0) {
-			if (size <= 0) new_qcount = int(qsi * (1 + beta)+0.5)-size;
-			else  new_qcount = int(qsi * (1 - beta)+0.5)-size;
+			if (size <= 0) raw_qcount = qsi * (1 + beta)-size;
+			else  raw_qcount = qsi * (1 - beta)-size;
 			//fprintf(app_context.config->out_trace_supply_sell, "period=,%d,agent_id=,%d, item_type_id=,%d, size=,%d,critical_stock=,%d,beta=,%lf,qsi=,%lf,new_qcount=,%d,qcount=,%d,\n", app_context.period_count, get_agent_id(), item_type_id, size, critical_stock, beta, qsi, new_qcount, q_count);
 
 		}
 		else {
-			if (size <= critical_stock) 	new_qcount = int(qsi * (1 + beta)+0.5)-size;
+			if (size <= critical_stock) 	raw_qcount = qsi * (1 + beta)-size;
 			//		else new_qcount = int(qsi * (1 - beta)) - size;
-			else if (size >= qmax - critical_stock) new_qcount = int(qsi * (1 - beta)+0.5)-size;
-			else new_qcount = q_count;
+			else if (size >= qmax - critical_stock) raw_qcount = qsi * (1 - beta)-size;
+			else { raw_qcount = double(q_count); carry_reset = true; }//変化させない分岐ではcarryを積ませない
 		}
-		if (new_qcount > qmax) new_qcount = qmax;//設備増産選択肢は入っていないので、この条件をとる20210917
-		else if (new_qcount < qmin) new_qcount = qmin;
+		double combined_qcount = raw_qcount + qcount_round_carry;
+		new_qcount = int(combined_qcount + 0.5);//四捨五入
+		qcount_round_carry = carry_reset ? 0.0 : (combined_qcount - double(new_qcount));//切り落とした(あるいは切り上げた)分を次期に持ち越す
+		if (new_qcount > qmax) { new_qcount = qmax; qcount_round_carry = 0.0; }//設備増産選択肢は入っていないので、この条件をとる20210917　天井でcarryもリセット
+		else if (new_qcount < qmin) { new_qcount = qmin; qcount_round_carry = 0.0; }
 	//takashima original logic for quantity
 /*
 		if(size==0) new_qcount=int(qsi*(1+beta)+0.5);
@@ -711,7 +722,7 @@ protected:
 	*/	
 //         新たな生産量の決定に際して、既存の在庫個数は考慮しない
 		//new_qcount = new_qcount - size;//新たな生産量の決定に際して既存の在庫個数を考慮する
-		if (new_qcount < 0) new_qcount = 0;
+		if (new_qcount < 0) { new_qcount = 0; qcount_round_carry = 0.0; }
 	//	fprintf(app_context.config->out_trace_supply_sell, "period=,%d,agent_id=,%d, item_type_id=,%d, size=,%d,critical_stock=,%d,beta=,%lf,qsi=,%lf,new_qcount=,%d,qcount=,%d,\n", app_context.period_count, get_agent_id(), item_type_id, size, critical_stock, beta, qsi, new_qcount, q_count);
 
 	//	fprintf(app_context.config->out_qcount_decision, "period=,%d,agent_id=,%d, item_type_id=,%d, size=,%d,new_qcount=,%d,qcount=,%d,\n",app_context.period_count,get_agent_id(),item_type_id,size,new_qcount, q_count);
@@ -818,12 +829,19 @@ protected:
 		int size = get_number_of_stocks(item_type_id);
 		long long price_ave=0;
 		// if (app_context.period_count > 0) price_ave = ave_price_in_market;
-		if (app_context.period_count > 0)
+		if (app_context.period_count > 0) {
 			//price_ave = get_dataAnalyzer()->get_ave_price(app_context.period_count - 1, item_type_id);//市場平均価格
 		//price_ave = get_bookKeeper()->get_ave_price_in_market();
 
 			if (agent_type != 2132) price_ave = app_context.retail_market_navi_for_customer->get_retail_market(item_type_id)->get_ave_price(item_type_id);
 			else price_ave = app_context.material_market_navi_for_retailer->get_retail_market(item_type_id)->get_ave_price(item_type_id);
+			//2026/10/1 ogibayashi: 上のget_ave_price(item_type_id)は「現在市場に残っている(売れ残っている)在庫」の平均価格であり、
+			//完売(size==0)が続く局面では在庫そのものが存在しないため常に0が返り、price_ave>0の分岐が一度も使われず価格が凍結する。
+			//在庫ベースの平均価格が得られない(0)場合は、直近期の実際の成約価格の平均(get_dataAnalyzer())で代替する。
+			if (price_ave <= 0) {
+				price_ave = long long(get_dataAnalyzer()->get_ave_price(app_context.period_count - 1, item_type_id));
+			}
+		}
 
 			long long new_price = 0;
 		double alpha=0.01;
