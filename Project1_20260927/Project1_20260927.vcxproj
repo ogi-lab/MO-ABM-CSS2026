@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>18.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{9bf8be86-83f2-4df6-9243-2a2ab076f40c}</ProjectGuid>
+    <RootNamespace>Project120260927</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Manifest>
+      <EnableSegmentHeap>true</EnableSegmentHeap>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Accountant.h" />
+    <ClInclude Include="AccountantData.h" />
+    <ClInclude Include="AccountData.h" />
+    <ClInclude Include="Agent.h" />
+    <ClInclude Include="AgentAggregator.h" />
+    <ClInclude Include="AgentAggregatorNavigator.h" />
+    <ClInclude Include="AreaMarket.h" />
+    <ClInclude Include="AreaMarketParameter.h" />
+    <ClInclude Include="AreaMarketRecord.h" />
+    <ClInclude Include="Bank.h" />
+    <ClInclude Include="BankAggregator.h" />
+    <ClInclude Include="BookKeeper.h" />
+    <ClInclude Include="BoughtRecord.h" />
+    <ClInclude Include="BuyDealer.h" />
+    <ClInclude Include="Buyer.h" />
+    <ClInclude Include="CData.h" />
+    <ClInclude Include="Consumer.h" />
+    <ClInclude Include="ConsumerAggregator.h" />
+    <ClInclude Include="ConsumerAggregatorNavigator.h" />
+    <ClInclude Include="ConsumerData.h" />
+    <ClInclude Include="ConsumerParameter.h" />
+    <ClInclude Include="ConsumerTotal.h" />
+    <ClInclude Include="CustomerMarketNavigator.h" />
+    <ClInclude Include="DataAnalyzer.h" />
+    <ClInclude Include="DataAnalyzerNavigator.h" />
+    <ClInclude Include="Destination.h" />
+    <ClInclude Include="DirectBuyDealer.h" />
+    <ClInclude Include="Enterprise.h" />
+    <ClInclude Include="EnterpriseManager.h" />
+    <ClInclude Include="EquipmentMaker.h" />
+    <ClInclude Include="EquipmentmakerAggregator.h" />
+    <ClInclude Include="Globals.h" />
+    <ClInclude Include="Globals2.h" />
+    <ClInclude Include="Globals3.h" />
+    <ClInclude Include="Government.h" />
+    <ClInclude Include="GovernmentAggregator.h" />
+    <ClInclude Include="GovernmentAggregatorNavigator.h" />
+    <ClInclude Include="GovernmentData.h" />
+    <ClInclude Include="GovernmentMarket.h" />
+    <ClInclude Include="GovernmentParameter.h" />
+    <ClInclude Include="GovernmentTotal.h" />
+    <ClInclude Include="HR.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="LaborMarket.h" />
+    <ClInclude Include="MarketBuyDealer.h" />
+    <ClInclude Include="MarketData.h" />
+    <ClInclude Include="MarketDataAnalyzer.h" />
+    <ClInclude Include="MarketDataAnalyzerNavigator.h" />
+    <ClInclude Include="MarketListener.h" />
+    <ClInclude Include="MarketSyncMarketLisnter.h" />
+    <ClInclude Include="MaterialMarketData.h" />
+    <ClInclude Include="ParameterData.h" />
+    <ClInclude Include="PredForItemByPrice.h" />
+    <ClInclude Include="PredForItemBySeq.h" />
+    <ClInclude Include="Producer.h" />
+    <ClInclude Include="ProducerParameter.h" />
+    <ClInclude Include="RandomGenerator.h" />
+    <ClInclude Include="Retailer.h" />
+    <ClInclude Include="RetailerAggregator.h" />
+    <ClInclude Include="RetailerData.h" />
+    <ClInclude Include="RetailerParameter.h" />
+    <ClInclude Include="RetailerTotal.h" />
+    <ClInclude Include="RetailMarket.h" />
+    <ClInclude Include="RetailMarketData.h" />
+    <ClInclude Include="RetailMarketNavigator.h" />
+    <ClInclude Include="RollAggregator.h" />
+    <ClInclude Include="Seller.h" />
+    <ClInclude Include="Shipment.h" />
+    <ClInclude Include="ShipmentNavigator.h" />
+    <ClInclude Include="ShipmentNavigatorImpl.h" />
+    <ClInclude Include="SimulatorApp.h" />
+    <ClInclude Include="SimulatorConfig.h" />
+    <ClInclude Include="SimulatorContext.h" />
+    <ClInclude Include="SingleMarketShipment.h" />
+    <ClInclude Include="SME.h" />
+    <ClInclude Include="SoleProprietor.h" />
+    <ClInclude Include="SoleProprietorAggregator.h" />
+    <ClInclude Include="SoleProprietorData.h" />
+    <ClInclude Include="SoleproprietorParameter.h" />
+    <ClInclude Include="SoleProprietorTotal.h" />
+    <ClInclude Include="StockRecord.h" />
+    <ClInclude Include="SuppliedRecord.h" />
+    <ClInclude Include="toukei.h" />
+    <ClInclude Include="Wholesaler.h" />
+    <ClInclude Include="WholesalerAggregator.h" />
+    <ClInclude Include="WholesalerData.h" />
+    <ClInclude Include="WholesalerParameter.h" />
+    <ClInclude Include="WholesalerTotal.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
