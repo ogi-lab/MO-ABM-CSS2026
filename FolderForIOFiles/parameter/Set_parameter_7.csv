@@ -1,0 +1,2 @@
+800000,1600000,12,18,2,3,400,450,2,3,0.06
+init_cash_min,init_cash_max,qmax_min,qmax_max,qmin_min,qmin_qmax,price_min,price_max,min_price_min,min_price_max,price_delta

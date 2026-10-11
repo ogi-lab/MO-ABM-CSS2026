@@ -1,0 +1,4 @@
+10,0.05,0,0,0.5,,600,800,0,20,30,0
+critical_period_for_demand,beta,critical_stock_ratio_for price,critical_stiock_ratio_for_qauntity,initial_quantity_ratio,,"retailer_price_min	",retrailer_price_max,retaler_price_derta,whoelsaler_price_min,whoelsaler_price_max,wholesaler_price_derta
+,,,,,,,,,,,
+,,,,,,1600,2400,0,400,600,0

@@ -1,0 +1,9 @@
+800000,1600000,36,54,2,3,400,500,2,3,0,0
+init_cash_min,init_cash_max,qmax_min,qmax_max,qmin_min,qmin_max,price_min,price_max,min_price_min,min_price_max,price_delta,min_utility_weight
+,,,,,,,,,,,
+,,192,294,,,,,,,,
+,,,,,,,,,,,
+,,144,220.5,,,,,,,,
+,,,,,,,,,,,
+,,12,18,,,,,,,,
+,,48,72,,,,,,,,
