@@ -1,0 +1,25 @@
+# Visual Studio build outputs and user files
+.vs/
+x64/
+x86/
+Debug/
+Release/
+*.exe
+*.obj
+*.pdb
+*.idb
+*.ilk
+*.ipch
+*.tlog
+*.log
+*.recipe
+*.json.command
+*.dt.d.json
+*.dt.module.json
+*.vcxproj.user
+*.suo
+*.user
+# Simulation output (generated at run time)
+FolderForIOFiles/data/
+# Backups
+*.zip
