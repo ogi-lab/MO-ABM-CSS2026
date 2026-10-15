@@ -4,7 +4,7 @@ Source code of the agent-based artificial economic model used in
 
 > Ogibayashi, S. (2026). Mechanism-Oriented Agent-Based Modeling (MO-ABM): A Methodology for Identifying the Indispensable Model Structures and Causal Mechanisms of Socio-Economic Phenomena. In *Proceedings of the 2026 Conference of the Computational Social Science Society of the Americas*. Springer (to appear).
 
-The model consists of consumers (C), retailers (R), raw-material makers (W, called `Wholesaler` in the code), sole proprietors (S), and the government (G). All transactions are recorded by double-entry bookkeeping, from which balance sheets, income statements, an input–output table, and GDP are computed at every step. The behavioral rules (Eqs. (1)–(3) of the paper) and all other details are described in the ODD document provided as supplementary material of the paper.
+The model consists of consumers (C), retailers (R), raw-material makers (W, called `Wholesaler` in the code), sole proprietors (S), and the government (G). All transactions are recorded by double-entry bookkeeping, from which balance sheets, income statements, an input–output table, and GDP are computed at every step. The behavioral rules (Eqs. (1)–(3) of the paper) and all other details are described in the ODD document (ODD_MO-ABM-CSS2026.pdf in this repository), which is also provided as supplementary material of the paper.
 
 This repository contains the versions used for the paper. Further development of the model takes place separately.
 
